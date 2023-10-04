@@ -17,4 +17,8 @@ def canUnlockAll(boxes):
     Returns:
         bool: True if all lockboxes can be unlocked, False otherwise.
     '''
-    pass
+    num_boxes = len(boxes)
+    seen_boxes = set([0])
+    unseen_boxes = set(boxes[0]).difference(set([0]))
+
+    
