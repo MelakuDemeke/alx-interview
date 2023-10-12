@@ -14,7 +14,7 @@ def minOperations(n):
     :param n: The target number of 'H' characters.
     :return: The minimum number of operations required.
     '''
-    if not isinstance(n, int) or n <= 0:
+    if not isinstance(n, int):
         return 0
 
     operation_count = 0
