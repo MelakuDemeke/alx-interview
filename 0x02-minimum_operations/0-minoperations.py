@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 '''
 This script defines a function to compute the fewest number of operations
 needed to result in exactly n 'H' characters. It provides an efficient
@@ -7,7 +7,7 @@ approach to achieving this by simulating copy and paste operations.
 
 
 def minOperations(n):
-    ''''
+    '''
     Computes the fewest number of operations needed to result
     in exactly n 'H' characters.
 
@@ -16,11 +16,9 @@ def minOperations(n):
     '''
     if not isinstance(n, int):
         return 0
-
     operation_count = 0
     clipboard_contents = 0
     complet = 1
-
     while complet < n:
         if clipboard_contents == 0:
             clipboard_contents = complet
