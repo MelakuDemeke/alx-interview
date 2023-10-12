@@ -19,15 +19,18 @@ def minOperations(n):
 
     operation_count = 0
     clipboard_contents = 0
+    complet = 1
 
-    while n > 1:
-        if n % 2 == 0:
-            # If n is even, perform a paste operation
-            clipboard_contents += 1
-            n //= 2
-        else:
-            # If n is odd, perform a copy-all and paste operation
-            clipboard_contents += n
-            n //= 2
-        operation_count += 1
+    while complet < n:
+        if clipboard_contents == 0:
+            clipboard_contents = complet
+            complet += clipboard_contents
+            operation_count += 2
+        elif n - complet > 0 and (n - complet) % complet == 0:
+            clipboard_contents = complet
+            complet += clipboard_contents
+            operation_count += 2
+        elif clipboard_contents > 0:
+            complet += clipboard_contents
+            operation_count += 1
     return operation_count
