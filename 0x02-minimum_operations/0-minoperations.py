@@ -17,3 +17,4 @@ def minOperations(n):
             clipboard_contents += n
             n //= 2
         operation_count += 1
+    return operation_count
