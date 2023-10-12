@@ -6,3 +6,6 @@ def minOperations(n):
 
     operation_count = 0
     clipboard_contents = 0
+
+    while n > 1:
+        pass
