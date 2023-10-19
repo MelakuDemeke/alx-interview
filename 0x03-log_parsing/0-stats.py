@@ -11,7 +11,11 @@ def print_message(status_code_counts, total_file_size):
     Returns:
         Nothing
     """
-    pass
+
+    print("File size: {}".format(total_file_size))
+    for code, count in sorted(status_code_counts.items()):
+        if count != 0:
+            print("{}: {}".format(code, count))
 
 status_code_counts = {'200': 0, '301': 0, '400': 0, '401': 0,
                       '403': 0, '404': 0, '405': 0, '500': 0}
@@ -37,7 +41,4 @@ try:
 except Exception as error:
     pass
 finally:
-    print('File size: {}'.format(total_file_size))
-    for code, count in sorted(status_code_counts.items()):
-        if count != 0:
-            print('{}: {}'.format(code, count))
+    print_message(dict_sc, total_file_size)
