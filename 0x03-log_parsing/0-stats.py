@@ -24,21 +24,22 @@ counter = 0
 
 try:
     for line in sys.stdin:
-        parts = line.split(" ")
-        if len(parts) > 4:
-            http_status_code = parts[-2]
-            file_size = parts[-1]
-            if http_status_code in status_code_counts:
-                status_code_counts[http_status_code] += 1
-            total_file_size += file_size
-            line_count += 1
-        if line_count == 10:
-            line_count = 0
-            print('File size: {}'.format(total_file_size))
-            for code, count in sorted(status_code_counts.items()):
-                if count != 0:
-                    print('{}: {}'.format(code, count))
-except Exception as error:
-    pass
+        parsed_line = line.split()  # Split the line
+        parsed_line = parsed_line[::-1]  # Reverse the order of elements
+
+        if len(parsed_line) > 2:
+            counter += 1
+
+            if counter <= 10:
+                total_file_size += int(parsed_line[0])  # Extract file size
+                status_code = parsed_line[1]  # Extract status code
+
+                if status_code in status_code_counts:
+                    status_code_counts[status_code] += 1
+
+            if counter == 10:
+                print_message(status_code_counts, total_file_size)
+                counter = 0
+
 finally:
-    print_message(dict_sc, total_file_size)
+    print_message(status_code_counts, total_file_size)
