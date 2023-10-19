@@ -19,14 +19,14 @@ try:
             line_count += 1
         if line_count == 10:
             line_count = 0
-            print('Total File Size: {}'.format(total_file_size))
+            print('File size: {}'.format(total_file_size))
             for code, count in sorted(status_code_counts.items()):
                 if count != 0:
                     print('{}: {}'.format(code, count))
 except Exception as error:
     pass
 finally:
-    print('Total File Size: {}'.format(total_file_size))
+    print('File size: {}'.format(total_file_size))
     for code, count in sorted(status_code_counts.items()):
         if count != 0:
             print('{}: {}'.format(code, count))
