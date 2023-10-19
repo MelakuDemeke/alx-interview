@@ -2,6 +2,17 @@
 
 import sys
 
+def print_message(status_code_counts, total_file_size):
+    """
+    Method to print
+    Args:
+        status_code_counts: Dictionary of status codes
+        total_file_size: Total size of the file
+    Returns:
+        Nothing
+    """
+    pass
+
 status_code_counts = {'200': 0, '301': 0, '400': 0, '401': 0,
                       '403': 0, '404': 0, '405': 0, '500': 0}
 total_file_size = 0
