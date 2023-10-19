@@ -16,3 +16,9 @@ for line in sys.stdin:
                 status_code_counts[http_status_code] += 1
         total_file_size += file_size
         line_count += 1
+    if line_count == 10:
+            line_count = 0
+            print('Total File Size: {}'.format(total_file_size))
+            for code, count in sorted(status_code_counts.items()):
+                if count != 0:
+                    print('{}: {}'.format(code, count))
