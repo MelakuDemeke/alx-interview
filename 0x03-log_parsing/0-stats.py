@@ -8,4 +8,8 @@ total_file_size = 0
 line_count = 0
 
 for line in sys.stdin:
-    pass
+    parts = line.split(" ")
+    if len(parts) > 4:
+        http_status_code = parts[-2]
+        file_size = parts[-1]
+        
