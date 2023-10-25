@@ -16,4 +16,6 @@ def validUTF8(data):
                 return False
             if 1 <= byte <= 127:
                 num_bytes = 0
+            elif 192 <= byte <= 223:
+                num_bytes = 1
             
