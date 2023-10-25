@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 '''Module to validate UTF8'''
+
+
 def validUTF8(data):
     '''
     Determines if a given data set represents a valid UTF-8 encoding.
@@ -11,7 +13,6 @@ def validUTF8(data):
     num_bytes = 0
 
     for byte in data:
-        
         # Check if the current byte is a continuation byte (10xxxxxx)
         if 128 <= byte <= 191:
             if num_bytes == 0:
