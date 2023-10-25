@@ -18,4 +18,6 @@ def validUTF8(data):
                 num_bytes = 0
             elif 192 <= byte <= 223:
                 num_bytes = 1
+            elif 224 <= byte <= 239:
+                num_bytes = 2
             
