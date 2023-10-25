@@ -10,4 +10,8 @@ def validUTF8(data):
             if num_bytes == 0:
                 return False
             num_bytes -= 1
-        
+        else:
+            # Check the number of bytes needed to represent this character
+            if num_bytes > 0:
+                return False
+            
