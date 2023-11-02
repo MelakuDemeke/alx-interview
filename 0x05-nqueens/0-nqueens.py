@@ -26,3 +26,7 @@ def solve_nqueens(N):
         sys.exit(1)
 
     board = [-1] * N
+
+    def print_solution(board):
+        solution = [[i, col] for i, col in enumerate(board)]
+        print(solution)
