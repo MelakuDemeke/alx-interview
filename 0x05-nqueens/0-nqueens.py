@@ -16,23 +16,34 @@ def is_safe(board, row, col, N):
 
 def solve_nqueens(N):
     board = [-1] * N
+    stack = []  # Use a stack to keep track of rows and columns
 
     def print_solution(board):
         solution = [[i, col] for i, col in enumerate(board)]
         print(solution)
 
-    def solve(row):
-        if row == N:
-            print_solution(board)
-            return
+    row = 0
+    col = 0
 
-        for col in range(N):
+    while row >= 0:
+        if col < N:
             if is_safe(board, row, col, N):
                 board[row] = col
-                solve(row + 1)
+                stack.append((row, col))
+                row += 1
+                col = 0
+            else:
+                col += 1
+        else:
+            if row == N:
+                print_solution(board)
+            if stack:
+                row, col = stack.pop()
                 board[row] = -1
-
-    solve(0)
+                row += 1
+                col += 1
+            else:
+                break
 
 
 if __name__ == '__main__':
