@@ -1,39 +1,7 @@
 #!/usr/bin/python3
-'''N Queens Problem'''
+'''N Queens Challenge'''
+
 import sys
-
-
-def is_safe(board, row, col, N):
-    for i in range(row):
-        if (
-            board[i] == col
-            or board[i] - i == col - row
-            or board[i] + i == col + row
-        ):
-            return False
-    return True
-
-
-def solve_nqueens(N):
-    board = [-1] * N
-
-    def print_solution(board):
-        solution = [[i, col] for i, col in enumerate(board)]
-        print(solution)
-
-    def solve(row):
-        if row == N:
-            print_solution(board)
-            return
-
-        for col in range(N):
-            if is_safe(board, row, col, N):
-                board[row] = col
-                solve(row + 1)
-                board[row] = -1
-
-    solve(0)
-
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
@@ -41,13 +9,88 @@ if __name__ == '__main__':
         sys.exit(1)
 
     try:
-        N = int(sys.argv[1])
+        board_size = int(sys.argv[1])  # 'n' renamed to 'board_size'
     except ValueError:
-        print("N must be a number")
-        sys.exit(1)
+        print('N must be a number')
+        exit(1)
 
-    if N < 4:
-        print("N must be at least 4")
-        sys.exit(1)
+    if board_size < 4:
+        print('N must be at least 4')
+        exit(1)
 
-    solve_nqueens(N)
+    solutions = []
+    queens_on_board = []  # Renamed 'placed_queens' to 'queens_on_board'
+    stop_search = False
+    current_row = 0
+    current_col = 0
+
+    # Iterate through rows
+    while current_row < board_size:
+        need_to_go_back = False
+        # Iterate through columns
+        while current_col < board_size:
+            # Check if the current column is safe
+            is_safe = True
+            for coord in queens_on_board:
+                col = coord[1]
+                if (
+                    col == current_col or
+                    col + (current_row - coord[0]) == current_col or
+                        col - (current_row - coord[0]) == current_col):
+                    is_safe = False
+                    break
+
+            if not is_safe:
+                if current_col == board_size - 1:
+                    need_to_go_back = True
+                    break
+                current_col += 1
+                continue
+
+            # Place the queen
+            queen_coordinates = [current_row, current_col]
+            queens_on_board.append(queen_coordinates)
+
+            if current_row == board_size - 1:
+                solutions.append(queens_on_board[:])
+                for coord in queens_on_board:
+                    if coord[1] < board_size - 1:
+                        current_row = coord[0]
+                        current_col = coord[1]
+                for i in range(board_size - current_row):
+                    queens_on_board.pop()
+
+                if (current_row == board_size - 1 and
+                        current_col == board_size - 1):
+                    queens_on_board = []
+                    stop_search = True
+
+                current_row -= 1
+                current_col += 1
+            else:
+                current_col = 0
+            break
+
+        if stop_search:
+            break
+
+        # On failure: go back to the previous row
+        # and continue from the last safe column + 1
+        if need_to_go_back:
+            current_row -= 1
+            while current_row >= 0:
+                current_col = queens_on_board[current_row][1] + 1
+                del queens_on_board[current_row]
+                if current_col < board_size:
+                    break
+                current_row -= 1
+            if current_row < 0:
+                break
+            continue
+        current_row += 1
+
+    for idx, solution in enumerate(solutions):
+        if idx == len(solutions) - 1:
+            print(solution, end='')
+        else:
+            print(solution)
