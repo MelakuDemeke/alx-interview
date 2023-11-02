@@ -21,4 +21,6 @@ def is_safe(board, row, col, N):
 
 
 def solve_nqueens(N):
-    pass
+    if N < 4:
+        print("N must be at least 4")
+        sys.exit(1)
