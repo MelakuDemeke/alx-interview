@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+'''N Queens Problem'''
 import sys
 
 
