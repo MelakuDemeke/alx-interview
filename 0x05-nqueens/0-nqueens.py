@@ -43,3 +43,7 @@ def solve_nqueens(N):
                 board[row] = -1
 
     solve(0)
+
+if len(sys.argv) != 2:
+    print("Usage: nqueens N")
+    sys.exit(1)
