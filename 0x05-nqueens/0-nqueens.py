@@ -30,3 +30,16 @@ def solve_nqueens(N):
     def print_solution(board):
         solution = [[i, col] for i, col in enumerate(board)]
         print(solution)
+
+    def solve(row):
+        if row == N:
+            print_solution(board)
+            return
+
+        for col in range(N):
+            if is_safe(board, row, col, N):
+                board[row] = col
+                solve(row + 1)
+                board[row] = -1
+
+    solve(0)
