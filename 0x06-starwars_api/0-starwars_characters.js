@@ -19,6 +19,7 @@ function fetchMovieCharacters() {
                             console.log(characterData.name);
                             printCharacterNames(index + 1);
                         } else {
+                            console.error(error);
                         }
                     });
                 }
