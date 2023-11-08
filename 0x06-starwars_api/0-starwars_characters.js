@@ -12,7 +12,11 @@ function fetchMovieCharacters() {
             const characters = movieData.characters;
 
             function printCharacterNames(index) {
-                
+                if (index < characters.length) {
+                    request(characters[index], (error, response, body) => {
+                        
+                    });
+                }
             }
         } else {
         }
