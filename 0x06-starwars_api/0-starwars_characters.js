@@ -14,7 +14,12 @@ function fetchMovieCharacters() {
             function printCharacterNames(index) {
                 if (index < characters.length) {
                     request(characters[index], (error, response, body) => {
-                        
+                        if (!error && response.statusCode === 200) {
+                            const characterData = JSON.parse(body);
+                            console.log(characterData.name);
+                            printCharacterNames(index + 1);
+                        } else {
+                        }
                     });
                 }
             }
