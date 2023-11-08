@@ -24,6 +24,8 @@ function fetchMovieCharacters() {
                     });
                 }
             }
+
+            printCharacterNames(0);
         } else {
         }
     });
