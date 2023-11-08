@@ -27,6 +27,7 @@ function fetchMovieCharacters() {
 
             printCharacterNames(0);
         } else {
+            console.error(error);
         }
     });
 }
