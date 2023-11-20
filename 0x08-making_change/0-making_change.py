@@ -3,4 +3,5 @@
 """
 
 def makeChange(coins, total):
-    pass
+    if total <= 0:
+        return 0
