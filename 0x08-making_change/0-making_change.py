@@ -17,4 +17,6 @@ def makeChange(coins, total):
     num_coins = len(coins)
 
     while remaining > 0:
-        pass
+        if coin_idx >= num_coins:
+            return -1
+        
