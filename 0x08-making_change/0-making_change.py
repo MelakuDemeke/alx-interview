@@ -15,3 +15,6 @@ def makeChange(coins, total):
     coin_idx = 0
     sorted_coins = sorted(coins, reverse=True)
     num_coins = len(coins)
+
+    while remaining > 0:
+        pass
