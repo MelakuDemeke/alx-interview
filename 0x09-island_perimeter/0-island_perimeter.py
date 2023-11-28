@@ -2,4 +2,5 @@
 """ Island Perimeter """
 
 def island_perimeter(grid):
-    pass
+    if not grid or not grid[0]:
+        return 0
