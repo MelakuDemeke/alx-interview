@@ -3,11 +3,11 @@
 
 
 def island_perimeter(grid):
-    if not grid or not grid[0]:
+    if not isinstance(grid, list):
         return 0
 
-    rows, cols = len(grid), len(grid[0])
     perimeter = 0
+    n = len(grid)
 
     for i in range(rows):
         for j in range(cols):
