@@ -18,3 +18,5 @@ def island_perimeter(grid):
                 # Check top neighbor
                 if i > 0 and grid[i - 1][j] == 1:
                     perimeter -= 2
+    
+    return perimeter
