@@ -2,6 +2,7 @@
 """prime gam
 """
 
+
 def isWinner(x, nums):
     """get winner of the prime game
     """
